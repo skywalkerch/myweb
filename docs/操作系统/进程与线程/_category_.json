@@ -1,0 +1,8 @@
+{
+  "label": "进程与线程",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "进程的相关调度算法与死锁问题"
+  }
+}
