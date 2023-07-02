@@ -11,9 +11,9 @@ const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Skywalkerch Site',
-  tagline: '君子不器',
-  favicon: 'img/favicon.ico',
+  title: 'Skywalkerch',
+  tagline: '苦心人，天不负，卧薪尝胆，三千越甲可吞吴',
+  favicon: 'img/favicon.svg',
   
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -30,14 +30,28 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
    
 
-
+  
 
 
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
-
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        language: ["en", "zh"],
+        // ```
+      }),
+    ],
+],
+  
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -89,17 +103,19 @@ const config = {
 
 
   themeConfig:
+
+  
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
 
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
 
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/logo.svg',
       
       mermaid: {
         theme: {light: 'neutral', dark: 'forest'},
@@ -108,7 +124,7 @@ const config = {
       navbar: {
         title: 'Skywalkerch',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'skywalkerch Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -116,21 +132,21 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: '笔记',
+            label: '知识集合',
           },
           {to: '/blog', label: '博客', position: 'left'},
-          {
+         /*  {
             href: 'https://github.com/skywalkerch/myweb',
             label: 'GitHub',
             position: 'right',
-          },
+          }, */
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: '文章',
+            title: '知识星球',
             items: [
               {
                 label: '介绍',
@@ -144,6 +160,10 @@ const config = {
               {
                 label: 'Github',
                 href: 'https://github.com/skywalkerch',
+              },
+              {
+                label: '邮箱',
+                href: 'mailto:skywalkerch@foxmail.com',
               },
               
             ],
@@ -164,8 +184,7 @@ const config = {
         theme: darkCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }
-    ),
+    }),
 };
 
 module.exports = config;
