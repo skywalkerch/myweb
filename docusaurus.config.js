@@ -28,11 +28,7 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-   
-
   
-
-
   markdown: {
     mermaid: true,
   },
