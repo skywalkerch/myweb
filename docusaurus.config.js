@@ -12,7 +12,7 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Skywalkerch',
-  tagline: '苦心人，天不负，卧薪尝胆，三千越甲可吞吴',
+  tagline: '子以四教：文，行，忠，信。',
   favicon: 'img/favicon.svg',
   
   // Set the production url of your site here
@@ -64,7 +64,7 @@ const config = {
       ({
         docs: {
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins:  [katex, {strict: false}],
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -73,7 +73,7 @@ const config = {
         },
         blog: {
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins:  [katex, {strict: false}],
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.

@@ -1,0 +1,8 @@
+{
+  "label": "文件管理",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "文件系统的结构"
+  }
+}
