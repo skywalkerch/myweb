@@ -29,54 +29,6 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   
-
-
-  plugins: [
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: [
-          'appInstalled',
-          'standalone',
-          'queryString',
-        ],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/logo.svg',
-          },
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json', // your PWA manifest
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: 'rgb(37, 194, 160)',
-          },
-        ],
-      },
-    ],
-
-    [
-      '@docusaurus/preset-classic',
-      {
-        sitemap: {
-          changefreq: 'daily',
-          priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
-        },
-      },
-    ],
-
-  ],
-
-
-
   markdown: {
     mermaid: true,
   },
@@ -165,6 +117,12 @@ const config = {
         theme: {light: 'neutral', dark: 'forest'},
       },
 
+
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
+
       navbar: {
         title: 'Skywalkerch',
         logo: {
@@ -176,9 +134,9 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: '知识集合',
+            label: '知识星球',
           },
-          {to: '/blog', label: '博客', position: 'left'},
+          {to: '/blog', label: '随笔', position: 'left'},
          /*  {
             href: 'https://github.com/skywalkerch/myweb',
             label: 'GitHub',
@@ -199,7 +157,7 @@ const config = {
             ],
           },
           {
-            title: '社交',
+            title: '联系',
             items: [
               {
                 label: 'Github',
@@ -216,9 +174,12 @@ const config = {
             title: '更多',
             items: [
               {
-                label: 'Blog',
+                label: '随笔',
                 to: '/blog',
-              },
+              },{
+                label:'关于',
+                to: '',
+              }
             ],
           },
         ],
