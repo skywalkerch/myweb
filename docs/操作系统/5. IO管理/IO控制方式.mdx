@@ -33,9 +33,13 @@ IO控制器从CPU接收一个读命令，然后从外部读数据。一旦数据
 :::note
 DMA(direct memory access)在主存和设备管理器之间开辟一个专有通路，数据可以直接从IO设备传入主存，不需要经过CPU，只有当数据已经进行主存后，DMA控制才向CPU发出中断信号，告诉CPU数据传输完毕  
 DMA控制方式中，DMA控制器取代了传统的IO接口（设备控制器），也可以说是evolution版的IO接口。
+由于DMA控制方式很少有详细且明确的通路图，这里引用“micro chip”的官方文档的解释
+![](https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/mypicbed202307111413121.png)
+
+![](https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/mypicbed202307111414360.png)
 
 **DMA数据传输通路**
-
+这个图是按照自己的理解所画，不是权威图，权威图应参考上图。
 ![](https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/mypicbed202307111153007.svg)
 #### 优点
 - 数据传输到主存不需要经过CPU，大大提高CPU利用率
