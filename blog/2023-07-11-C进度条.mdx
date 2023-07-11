@@ -1,0 +1,74 @@
+---
+title: 用C语言打印进度条
+authors: [skywalkerch]
+tags: [有趣的代码]
+---
+
+以下是用C语言打印进度条的一种实现思路
+```c
+#include <stdio.h>
+#include<windows.h>
+int main() {
+    int ProBarLen = 20; //进度条长度
+    int totalPro = 100; //进度最大值
+
+    for (int i = 0; i <= totalPro; i++) {
+        printf("[");
+
+        int finishedLen = ProBarLen * i / totalPro; //已经完成的进度
+        int leftLen = ProBarLen - finishedLen; //剩下的进度
+
+        for (int j = 0; j < finishedLen; j++) {
+            printf("\033[;34m=\033[0m");
+        }
+
+        for (int j = 0; j < leftLen; j++) {
+            printf(" ");
+        }
+
+        if(i==totalPro){ printf("\033[;31m>>\033[0m"); }
+        printf("] %d%%", i);
+
+        fflush(stdout); // 刷新输出缓冲区
+        printf("\r"); // 光标回到本行的开头
+    }
+
+    return 0;
+}
+```
+
+写成函数的形式，以便以后调用
+```c
+void progressBar(int i) {
+    int ProBarLen = 20; //进度条长度
+    int totalPro = 100; //进度最大值
+
+        printf("[");
+
+        int finishedLen = ProBarLen * i / totalPro; //已经完成的进度
+        int leftLen = ProBarLen - finishedLen; //剩下的进度
+
+        for (int j = 0; j < finishedLen; j++) {
+            printf("\033[;34m=\033[0m");
+        }
+
+        for (int j = 0; j < leftLen; j++) {
+            printf(" ");
+        }
+
+        if (i == totalPro) { printf("\033[;31m>>\033[0m"); }
+        printf("] %d%%", i);
+
+        fflush(stdout); // 刷新输出缓冲区
+        printf("\r"); // 光标回到本行的开头
+
+}
+
+//######################################################################
+int main() {
+    for (int i = 1; i <= 100; Sleep(998),i++) {
+        progressBar(i);
+    }
+    return 0;
+}
+```
