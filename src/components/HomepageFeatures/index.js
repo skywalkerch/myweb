@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: '知识星球',
+    title: '',
     Svg: require('@site/static/img/computer-and-people-svgrepo-com.svg').default,
     description: (
       <>
@@ -13,7 +13,7 @@ const FeatureList = [
     ),
   },
   {
-    title: '人工智能',
+    title: '',
     Svg: require('@site/static/img/ai-mi-algorithm-svgrepo-com.svg').default,
     description: (
       <>
@@ -22,7 +22,7 @@ const FeatureList = [
     ),
   },
   {
-    title: '疾驰人生',
+    title: '',
     Svg: require('@site/static/img/walk-svgrepo-com.svg').default,
     description: (
       <>
