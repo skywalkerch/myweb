@@ -1,0 +1,8 @@
+{
+  "label": "IO管理",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "输入输出系统的管理"
+  }
+}
