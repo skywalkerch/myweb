@@ -111,7 +111,7 @@ const config = {
       image: 'img/logo.svg',
       
       mermaid: {
-        theme: {light: 'neutral', dark: 'forest'},
+        theme: {light: 'forest', dark: 'neutral'},
       },
 
 
