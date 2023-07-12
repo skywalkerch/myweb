@@ -50,6 +50,7 @@ int firstNeighbor(Graph G, int w) {
 ```
 
 </TabItem>
+
 <TabItem value="后继相邻结点" label="后继相邻结点">
 
 ```cpp
@@ -68,21 +69,13 @@ int nextNeighbor(Graph G, int w,int last) {
 <TabItem value="图初始化" label="图初始化">
 
 ```cpp
-void init(Graph G) {
-	for (int i = 0; i < G.vexnum; i++) {
+void init(Graph *G) {
+	for (int i = 0; i < G->vexnum; i++) {
 		visited[i] = 0;
 		distance[i] = 1e9;
 		path[i] = -1;
 	}
-}
-```
 
-</TabItem>
-
-<TabItem value="邻接矩阵初始化" label="邻接矩阵初始化">
-
-```cpp
-void init_Graph(Graph *G) {
 	G->edge[0][0] = 0; G->edge[1][0] = 1; G->edge[2][0] = 0; G->edge[3][0] = 0; G->edge[4][0] = 1; G->edge[5][0] = 0; G->edge[6][0] = 0; G->edge[7][0] = 0;
 	G->edge[0][1] = 1; G->edge[1][1] = 0; G->edge[2][1] = 0; G->edge[3][1] = 0; G->edge[4][1] = 0; G->edge[5][1] = 1; G->edge[6][1] = 0; G->edge[7][1] = 0;
 	G->edge[0][2] = 0; G->edge[1][2] = 0; G->edge[2][2] = 0; G->edge[3][2] = 1; G->edge[4][2] = 0; G->edge[5][2] = 2; G->edge[6][2] = 1; G->edge[7][2] = 0;
@@ -91,9 +84,13 @@ void init_Graph(Graph *G) {
 	G->edge[0][5] = 0; G->edge[1][5] = 1; G->edge[2][5] = 1; G->edge[3][5] = 0; G->edge[4][5] = 0; G->edge[5][5] = 0; G->edge[6][5] = 1; G->edge[7][5] = 0;
 	G->edge[0][6] = 0; G->edge[1][6] = 0; G->edge[2][6] = 1; G->edge[3][6] = 1; G->edge[4][6] = 0; G->edge[5][6] = 1; G->edge[6][6] = 0; G->edge[7][6] = 1;
 	G->edge[0][7] = 0; G->edge[1][7] = 0; G->edge[2][7] = 0; G->edge[3][7] = 1; G->edge[4][7] = 0; G->edge[5][7] = 0; G->edge[6][7] = 1; G->edge[7][7] = 0;
+
 }
 ```
+
 </TabItem>
+
+
 </Tabs>
 
 ### 核心算法
@@ -196,5 +193,6 @@ graph LR
 </Tabs>
 
 ## 🍭Dijskstra 算法
+
 
 ## 🍓Floyd 算法
