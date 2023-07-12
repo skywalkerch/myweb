@@ -8,10 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## 🍉BFS最短路径算法 
 
-### 基础函数
-
+### 基础函数(公共)
 
 <Tabs>
 
@@ -21,16 +19,22 @@ import TabItem from '@theme/TabItem';
 #include <stdio.h>
 #include <queue>
 #include <stack>
-int visited[100];
-int distance[100];
+#include <math.h>
+
+//全局变量-------------------------
+int visited[100];		//用于BFS算法
+double distance[100];
 int path[100];
+bool final[100];		//用于Dijsktra算法
+//-------------------------------
 
+//图的信息-------------------------
+double edge[100][100]; //邻接矩阵
+int vexnum; //顶点个数
 
-typedef struct {
-	int edge[100][100];
-	int vexnum;
-	int arcnum;
-}Graph;
+int arcnum; //边的个数
+//--------------------------------
+
 ```
 
 </TabItem>
@@ -39,14 +43,16 @@ typedef struct {
 <TabItem value="第一个相邻结点" label="第一个相邻结点">
 
 ```cpp
-int firstNeighbor(Graph G, int w) {
-	for (int i = 0; i < G.vexnum; i++) {
-		if (G.edge[w][i]&&i!=w) {
+//基础函数-------------------------
+int firstNeighbor(const int w) {
+	for (int i = 0; i < vexnum; i++) {
+		if (edge[w][i] > 0 && edge[w][i] < INFINITY && i != w) {
 			return i;
 		}
 	}
 	return -1;
 }
+
 ```
 
 </TabItem>
@@ -54,51 +60,57 @@ int firstNeighbor(Graph G, int w) {
 <TabItem value="后继相邻结点" label="后继相邻结点">
 
 ```cpp
-int nextNeighbor(Graph G, int w,int last) {
-	for (int i = last+1; i < G.vexnum; i++) {
-		if (G.edge[w][i] && i != w) {
+int nextNeighbor(const int w, const int last) {
+	for (int i = last + 1; i < vexnum; i++) {
+		if (edge[w][i] > 0 && edge[w][i] < INFINITY && i != w) {
 			return i;
 		}
 	}
 	return -1;
 }
+
 ```
 
 </TabItem>
 
-<TabItem value="图初始化" label="图初始化">
+<TabItem value="测试函数" label="测试函数">
 
 ```cpp
-void init(Graph *G) {
-	for (int i = 0; i < G->vexnum; i++) {
-		visited[i] = 0;
-		distance[i] = 1e9;
-		path[i] = -1;
+void test(void(*func)(const int first)) {
+	vexnum = 8;
+	arcnum = 10;
+	init();
+	int start = 0;
+	int destination = 2;//要访问的顶点
+	func(start);
+	printf("从%d号顶点到%d顶点距离为%.0f\n", start, destination, distance[destination]);
+	printf("路径为-> ");
+	std::stack<int> s;
+	while (path[destination] != -1) {
+		s.push(destination);
+		destination = path[destination];
 	}
-
-	G->edge[0][0] = 0; G->edge[1][0] = 1; G->edge[2][0] = 0; G->edge[3][0] = 0; G->edge[4][0] = 1; G->edge[5][0] = 0; G->edge[6][0] = 0; G->edge[7][0] = 0;
-	G->edge[0][1] = 1; G->edge[1][1] = 0; G->edge[2][1] = 0; G->edge[3][1] = 0; G->edge[4][1] = 0; G->edge[5][1] = 1; G->edge[6][1] = 0; G->edge[7][1] = 0;
-	G->edge[0][2] = 0; G->edge[1][2] = 0; G->edge[2][2] = 0; G->edge[3][2] = 1; G->edge[4][2] = 0; G->edge[5][2] = 2; G->edge[6][2] = 1; G->edge[7][2] = 0;
-	G->edge[0][3] = 0; G->edge[1][3] = 0; G->edge[2][3] = 1; G->edge[3][3] = 0; G->edge[4][3] = 0; G->edge[5][3] = 0; G->edge[6][3] = 1; G->edge[7][3] = 1;
-	G->edge[0][4] = 1; G->edge[1][4] = 0; G->edge[2][4] = 0; G->edge[3][4] = 0; G->edge[4][4] = 0; G->edge[5][4] = 0; G->edge[6][4] = 0; G->edge[7][4] = 0;
-	G->edge[0][5] = 0; G->edge[1][5] = 1; G->edge[2][5] = 1; G->edge[3][5] = 0; G->edge[4][5] = 0; G->edge[5][5] = 0; G->edge[6][5] = 1; G->edge[7][5] = 0;
-	G->edge[0][6] = 0; G->edge[1][6] = 0; G->edge[2][6] = 1; G->edge[3][6] = 1; G->edge[4][6] = 0; G->edge[5][6] = 1; G->edge[6][6] = 0; G->edge[7][6] = 1;
-	G->edge[0][7] = 0; G->edge[1][7] = 0; G->edge[2][7] = 0; G->edge[3][7] = 1; G->edge[4][7] = 0; G->edge[5][7] = 0; G->edge[6][7] = 1; G->edge[7][7] = 0;
-
+	s.push(start);
+	while (!s.empty()) {
+		printf("%d ", s.top());
+		s.pop();
+	}
 }
 ```
-
 </TabItem>
 
-
 </Tabs>
+
+
+
+## 🍉BFS最短路径算法 
 
 ### 核心算法
 <Tabs>
 <TabItem value="BFS最短路径" label="BFS最短路径">
 
 ```cpp
-void BFS_shortestPath(Graph G,int first) {
+void BFS_shortestPath( const int first) {
 	//初始化部分
 	std::queue<int> q;
 	visited[first] = 1;
@@ -107,7 +119,7 @@ void BFS_shortestPath(Graph G,int first) {
 	while (!q.empty()) {
 		int current = q.front();
 		q.pop();
-		for (int w = firstNeighbor(G, current); w >= 0; w = nextNeighbor(G, current, w)) {
+		for (int w = firstNeighbor( current); w >= 0; w = nextNeighbor(current, w)) {
 			if (!visited[w]) {
 				q.push(w);
 				visited[w] = 1;
@@ -117,36 +129,36 @@ void BFS_shortestPath(Graph G,int first) {
 		}
 	}
 }
+
 ```
 </TabItem>
-<TabItem value="主函数" label="主函数">
+
+<TabItem value="图初始化" label="图初始化">
 
 ```cpp
-int main() {
-	Graph G;
-	G.vexnum = 8;
-	G.arcnum = 10;
-	init(G);
-	init_Graph(&G);
-	BFS_shortestPath(G, 1);
-	int re = 4;//要访问的顶点
-	printf("从1号顶点到%d顶点距离为%d\n", re, distance[re]);
-	printf("路径为-> ");
-	std::stack<int> s;
+void init() {
+	for (int i = 0; i < vexnum; i++) {
+		visited[i] = 0;
+		distance[i] = INFINITY;
+		path[i] = -1;
+		final[i] = false; //用于dijsktra算法
+	}
 
-	while (path[re] != -1) {
-		s.push(re);
-		re = path[re];
-	}
-	s.push(1);
-	while (!s.empty()) {
-		printf("%d ", s.top());
-		s.pop();
-	}
+	edge[0][0] = 0; edge[1][0] = 1; edge[2][0] = 0; edge[3][0] = 0; edge[4][0] = 1; edge[5][0] = 0; edge[6][0] = 0; edge[7][0] = 0;
+	edge[0][1] = 1; edge[1][1] = 0; edge[2][1] = 0; edge[3][1] = 0; edge[4][1] = 0; edge[5][1] = 1; edge[6][1] = 0; edge[7][1] = 0;
+	edge[0][2] = 0; edge[1][2] = 0; edge[2][2] = 0; edge[3][2] = 1; edge[4][2] = 0; edge[5][2] = 2; edge[6][2] = 1; edge[7][2] = 0;
+	edge[0][3] = 0; edge[1][3] = 0; edge[2][3] = 1; edge[3][3] = 0; edge[4][3] = 0; edge[5][3] = 0; edge[6][3] = 1; edge[7][3] = 1;
+	edge[0][4] = 1; edge[1][4] = 0; edge[2][4] = 0; edge[3][4] = 0; edge[4][4] = 0; edge[5][4] = 0; edge[6][4] = 0; edge[7][4] = 0;
+	edge[0][5] = 0; edge[1][5] = 1; edge[2][5] = 1; edge[3][5] = 0; edge[4][5] = 0; edge[5][5] = 0; edge[6][5] = 1; edge[7][5] = 0;
+	edge[0][6] = 0; edge[1][6] = 0; edge[2][6] = 1; edge[3][6] = 1; edge[4][6] = 0; edge[5][6] = 1; edge[6][6] = 0; edge[7][6] = 1;
+	edge[0][7] = 0; edge[1][7] = 0; edge[2][7] = 0; edge[3][7] = 1; edge[4][7] = 0; edge[5][7] = 0; edge[6][7] = 1; edge[7][7] = 0;
 
 }
 ```
+
 </TabItem>
+
+
 </Tabs>
 
 
@@ -193,6 +205,121 @@ graph LR
 </Tabs>
 
 ## 🍭Dijskstra 算法
+### 核心算法
+
+<Tabs>
+<TabItem value="核心算法" label="核心算法">
+
+```cpp
+void dijsktra( const int first) {
+	//初始化阶段
+	int full = vexnum;//final数组是否全部为true的标志
+	distance[first] = 0;
+	int current=-1;
+	//在当前final值为false对应的distance元素中找到最小值
+	while (full) {
+		double min = INFINITY;
+		for (int i = 0; i < vexnum; i++) {
+			if (!final[i]) {
+				if (distance[i] <= min) {
+					min = distance[i];
+					current = i;
+				}
+			}
+		}
+		
+		if (current >= 0 && current < vexnum) {
+			final[current] = true;
+			full--;
+		}
+
+		for (int w = firstNeighbor(current); w >= 0; w = nextNeighbor( current, w)) {
+			if (distance[w] > edge[current][w] + distance[current]) {
+				distance[w] = edge[current][w] + distance[current];
+				path[w] = current;
+			}
+			
+		}
+	}
+}
+```
+
+</TabItem>
+
+<TabItem value="图初始化" label="图初始化">
+
+```cpp
+void init() {
+	for (int i = 0; i < vexnum; i++) {
+		visited[i] = 0;
+		distance[i] = INFINITY;
+		path[i] = -1;
+		final[i] = false; //用于dijsktra算法
+	}
+
+	//Dijsktra
+	edge[0][0] = 0;		  edge[1][0] = INFINITY; edge[2][0] = INFINITY; edge[3][0] = 7;		   edge[4][0] = 5;
+	edge[0][1] = 10;	  edge[1][1] = 0;		 edge[2][1] = INFINITY; edge[3][1] = INFINITY; edge[4][1] = 3;
+	edge[0][2] = INFINITY;edge[1][2] = 1;		 edge[2][2] = 0;	    edge[3][2] = 6;		   edge[4][2] = 9; 
+	edge[0][3] = INFINITY;edge[1][3] = INFINITY; edge[2][3] = 4;		edge[3][3] = 0;		   edge[4][3] = 2;
+	edge[0][4] = 5;		  edge[1][4] = 5;        edge[2][4] = INFINITY;	edge[3][4] = INFINITY; edge[4][4] = 0;
+	
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### 输出
+
+<Tabs>
+<TabItem value="目标: 2" label="目标: 2">
+
+```mermaid
+graph LR
+0(V0)-- 10   -->1(V1)
+0(V0)--	5	 -->4(V4)
+1(V1)--	2	 -->4(V4)
+1(V1)--	1	 -->2(V2)
+		 
+2(V2)--	4	 -->3(V3)
+3(V3)--	6	 -->2(V2)
+3(V3)--	7	 -->0(V0)
+4(V4)--	2	 -->3(V3)
+4(V4)--	9	 -->2(V2)
+4(V4)--	3	 -->1(V1)
+
+```
+
+
+```txt
+从0号顶点到2顶点距离为9
+```
+
+```mermaid
+graph LR
+
+-1(最短路径)===0(V0)
+0(V0)-->4(V4)
+4(V4)-->1(V1)
+1(V1)-->2(V2)
+
+```
+
+</TabItem>
+
+
+</Tabs>
+
+
+
+
+
+
+
+
+
 
 
 ## 🍓Floyd 算法
