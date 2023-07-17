@@ -1,0 +1,12 @@
+{
+    "envId": "skywalkerch-8gvh2az66c8be308",
+    "version": "2.0",
+    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+    "functionRoot": "./functions",
+    "functions": [],
+    "region": "ap-shanghai",
+    "framework": {
+        "name": "myweb",
+        "plugins": {}
+    }
+}
