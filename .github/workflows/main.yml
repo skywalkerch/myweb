@@ -17,5 +17,4 @@ jobs:
             secretKey: ${{ secrets.secretKey }}
             # 云开发的环境id
             envId: ${{ secrets.envId }}
-            # Github 项目静态文件的路径
-            staticSrcPath: build
+
