@@ -13,10 +13,7 @@
                 "memorySize": 128,
                 "timeout": 5,
                 "runtime": "Nodejsv18.16.0",
-                "handler": "index.main",
-                "envVariables": {
-                  "accessToken": "{{env.accessToken}}"
-                }
+                "handler": "index.main"
               }
             ]
           }
