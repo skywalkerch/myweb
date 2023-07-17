@@ -22,4 +22,4 @@ jobs:
             # 云开发的环境id
             envId: ${{ secrets.ENVID }}
             # Github 项目静态文件的路径
-          staticSrcPath: public
+            staticSrcPath: public
