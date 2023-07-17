@@ -32,8 +32,12 @@ const config = {
   markdown: {
     mermaid: true,
   },
+  plugins: [
+    'plugin-image-zoom'
+  ],
   themes: [
     '@docusaurus/theme-mermaid',
+    '@saucelabs/theme-github-codeblock',
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       ({
@@ -42,7 +46,7 @@ const config = {
         hashed: true,
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
-        language: ["en", "zh"],
+        language: ["zh"],
         // ```
       }),
     ],
@@ -54,7 +58,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['en','zh-Hans'],
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -114,6 +118,19 @@ const config = {
         theme: {light: 'forest', dark: 'neutral'},
       },
 
+      imageZoom: {
+        // CSS selector to apply the plugin to, defaults to '.markdown img'
+        selector: '.img_ev3q',
+        // Optional medium-zoom options
+        // see: https://www.npmjs.com/package/medium-zoom#options
+        options: {
+          margin: 24,
+          background: '#BADA55',
+          scrollOffset: 0,
+          container: '#zoom-container',
+          template: '#zoom-template',
+        },
+      },
 
       tableOfContents: {
         minHeadingLevel: 2,
@@ -121,7 +138,7 @@ const config = {
       },
 
       navbar: {
-        title: 'Skywalkerch',
+        title: '🚀Skywalkerch',
         logo: {
           alt: 'skywalkerch Logo',
           src: 'img/logo.svg',
@@ -131,9 +148,9 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: '知识星球',
+            label: '🪐知识星球',
           },
-          {to: '/blog', label: '随笔', position: 'left'},
+          {to: '/blog', label: '✒️随笔', position: 'left'},
          /*  {
             href: 'https://github.com/skywalkerch/myweb',
             label: 'GitHub',
@@ -145,36 +162,36 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '知识星球',
+            title: '🪐知识星球',
             items: [
               {
-                label: '介绍',
+                label: '🔭介绍',
                 to: '/docs/介绍',
               },
             ],
           },
           {
-            title: '联系',
+            title: '☎️联系',
             items: [
               {
-                label: 'Github',
+                label: '👾Github',
                 href: 'https://github.com/skywalkerch',
               },
               {
-                label: '邮箱',
+                label: '📬邮箱',
                 href: 'mailto:skywalkerch@foxmail.com',
               },
               
             ],
           },
           {
-            title: '更多',
+            title: '🧰更多',
             items: [
               {
-                label: '随笔',
+                label: '✒️随笔',
                 to: '/blog',
               },{
-                label:'关于',
+                label:'📡关于',
                 to: '/blog/2023/07/03/关于',
               }
             ],
