@@ -1,0 +1,26 @@
+{
+    "envId": "{{env.ENV_ID}}",
+    "version": "2.0",
+    "framework": {
+      "name": "gh-actions-test",
+      "plugins": {
+        "func": {
+          "use": "@cloudbase/framework-plugin-function",
+          "inputs": {
+            "functions": [
+              {
+                "name": "skywalkerch",
+                "memorySize": 128,
+                "timeout": 5,
+                "runtime": "Nodejsv18.16.0",
+                "handler": "index.main",
+                "envVariables": {
+                  "accessToken": "{{env.accessToken}}"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
