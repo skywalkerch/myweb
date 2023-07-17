@@ -15,9 +15,11 @@ jobs:
         # 使用云开发 Github Action 部署
         - name: Tencent CloudBase Github Action
           uses: TencentCloudBase/cloudbase-action@v2.0.1
-          with:
-          secretId: ${{secrets.secretId}}
-          secretKey: ${{secrets.secretKey}}
-          envId: ${{secrets.envId}}
+          with: 
+            # 云开发的访问密钥 secretId 和 secretKey
+            secretId: ${{ secrets.SECRETID }}
+            secretKey: ${{ secrets.SECRETKEY }}
+            # 云开发的环境id
+            envId: ${{ secrets.ENVID }}
             # Github 项目静态文件的路径
           staticSrcPath: public
