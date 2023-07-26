@@ -54,14 +54,14 @@ const config = {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans']
   },
-
+  
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          remarkPlugins: [math],
+          remarkPlugins: [math,{ strict: false }],
           rehypePlugins: [katex, { strict: false }],
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -70,7 +70,7 @@ const config = {
             'https://github.com/skywalkerch/myweb/blob/main/'
         },
         blog: {
-          remarkPlugins: [math],
+          remarkPlugins: [math,{ strict: false }],
           rehypePlugins: [katex, { strict: false }],
           showReadingTime: true,
           // Please change this to your repo.
@@ -78,6 +78,7 @@ const config = {
           editUrl:
             'https://github.com/skywalkerch/myweb/blob/main/'
         },
+
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
@@ -139,11 +140,21 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            type: 'doc',
+            docId :'笔记/计算机/介绍',
+            sidebarId: 'computer408',
             position: 'left',
-            label: '🪐知识星球'
+            label: '🪐计算机星球'
           },
+
+          {
+            type: 'doc',
+            docId :'算法/介绍',
+            sidebarId: 'algorithm',
+            position: 'left',
+            label: '📈算法'
+          },
+
           { to: '/blog', label: '✒️随笔', position: 'left' }
 
           /*  {
