@@ -80,11 +80,6 @@ const sidebars = {
       collapsed: true
     },
   ]
-
-
-
-
-
 };
 
 module.exports = sidebars;

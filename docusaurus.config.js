@@ -169,15 +169,6 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '🪐知识星球',
-            items: [
-              {
-                label: '🔭介绍',
-                to: '/docs/笔记/计算机/介绍'
-              }
-            ]
-          },
-          {
             title: '☎️联系',
             items: [
               {
