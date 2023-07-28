@@ -160,6 +160,11 @@ const config = {
            label: '✒️随笔', 
            position: 'left',
            target: '_blank'
+           },
+           { to: '/docs/独立页面/关于',
+           label: '🗺️关于', 
+           position: 'right',
+           target: '_blank'
            }
           /*  {
             href: 'https://github.com/skywalkerch/myweb',
