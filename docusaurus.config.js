@@ -155,7 +155,7 @@ const config = {
             label: '📈算法',
             target: '_blank'
           },
-          
+
           { to: '/blog',
            label: '✒️随笔', 
            position: 'left',
@@ -169,7 +169,7 @@ const config = {
 
         ]
       },
-      footer: {
+     /* footer: {
         style: 'dark',
         links: [
           {
@@ -204,7 +204,8 @@ const config = {
           }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Skywalkerch Site`
-      },
+      },*/
+      footer: false,
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
