@@ -205,7 +205,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Skywalkerch Site`
       },*/
-      footer: false,
+      footer: {},
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
