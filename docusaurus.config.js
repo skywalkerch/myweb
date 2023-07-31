@@ -6,7 +6,7 @@ const katex = require('rehype-katex')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Skywalkerch',
+  title: 'skywalkerch',
   tagline: '',
   favicon: 'img/favicon.svg',
 
