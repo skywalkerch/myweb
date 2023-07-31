@@ -4,6 +4,11 @@
  */
 
 
+.hero_title{
+  color: #33925d;
+}
+
+
  .heroBanner {
   position: absolute;
   top: 0;
