@@ -4,9 +4,6 @@
  */
 
 
-.hero_title{
-  color: #33925d;
-}
 
 
  .heroBanner {
@@ -18,7 +15,7 @@
   padding: 10rem 0;
   text-align: center;
   overflow: hidden;
-  background-image: url('https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/202307281145480.png');
+  background-image: url('https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/202307311611612.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
