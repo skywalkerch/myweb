@@ -7,7 +7,7 @@ const katex = require('rehype-katex')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Skywalkerch',
-  tagline: '子以四教：文，行，忠，信。',
+  tagline: '',
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
