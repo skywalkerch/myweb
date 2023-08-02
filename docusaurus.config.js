@@ -88,7 +88,7 @@ const config = {
 
   stylesheets: [
     {
-      href: 'https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/katex.css',
+      href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css',
       type: 'text/css',
       integrity:
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
