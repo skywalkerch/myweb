@@ -91,7 +91,7 @@ const config = {
       href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css',
       type: 'text/css',
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+        'sha384-	1aface5ee84c013804b12c02b38b26ba5ef889718e8b19ed20b7545bd5e6502ebe1d7d2c2cd00adeaef51e8b49aa5027',
       crossorigin: 'anonymous'
     }
   ],
