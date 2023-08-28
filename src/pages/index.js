@@ -18,7 +18,7 @@ function HomepageHeader() {
   <p className="hero__subtitle">{siteConfig.tagline}</p>
   <Link
   className="button button--secondary button--lg"
-  to="/docs/笔记/计算机/介绍"
+  to="/docs/notes/computer science/introduce"
   style={{ backgroundColor: '#81c8be',border:'2px solid #81c8be' }}
 >
   从这里进去吧

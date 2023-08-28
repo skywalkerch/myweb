@@ -140,7 +140,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId :'笔记/计算机/介绍',
+            docId :'notes/computer science/introduce',
             sidebarId: 'computer408',
             position: 'left',
             label: '🪐计算机星球',
@@ -149,7 +149,7 @@ const config = {
 
           {
             type: 'doc',
-            docId :'算法/介绍',
+            docId :'algorithm/introduce',
             sidebarId: 'algorithm',
             position: 'left',
             label: '📈算法',
@@ -161,7 +161,7 @@ const config = {
            position: 'left',
            target: '_blank'
            },
-           { to: '/docs/独立页面/关于',
+           { to: '/docs/independent/about',
            label: '🗺️关于', 
            position: 'right',
            target: '_blank'
@@ -201,7 +201,7 @@ const config = {
                 to: '/blog',
                 target: '_blank'
               }, {
-                to :'docs/独立页面/关于',
+                to :'docs/independent/about',
                 label: '🗺️关于',
                 target: '_blank'
               }
