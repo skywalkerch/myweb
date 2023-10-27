@@ -149,6 +149,14 @@ const config = {
 
           {
             type: 'doc',
+            docId :'notes/408 conclusion/introduce',
+            sidebarId: 'conclusion408',
+            position: 'left',
+            label: '🎨408总结',
+            target: '_blank'
+          },
+          {
+            type: 'doc',
             docId :'algorithm/introduce',
             sidebarId: 'algorithm',
             position: 'left',
