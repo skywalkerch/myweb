@@ -144,7 +144,7 @@ const config = {
             sidebarId: 'computer408',
             position: 'left',
             label: '🪐计算机星球',
-            target: '_blank'
+            target: '_self'
           },
 
           {
@@ -153,7 +153,7 @@ const config = {
             sidebarId: 'conclusion408',
             position: 'left',
             label: '🎨408总结',
-            target: '_blank'
+            target: '_self'
           },
           {
             type: 'doc',
@@ -161,18 +161,18 @@ const config = {
             sidebarId: 'algorithm',
             position: 'left',
             label: '📈算法',
-            target: '_blank'
+            target: '_self'
           },
 
           { to: '/blog',
            label: '✒️随笔', 
            position: 'left',
-           target: '_blank'
+           target: '_self'
            },
            { to: '/docs/independent/about',
            label: '🗺️关于', 
            position: 'right',
-           target: '_blank'
+           target: '_self'
            }
           /*  {
             href: 'https://github.com/skywalkerch/myweb',
@@ -191,12 +191,12 @@ const config = {
               {
                 label: '👾Github',
                 href: 'https://github.com/skywalkerch',
-                target: '_blank'
+                target: '_self'
               },
               {
                 label: '📬邮箱',
                 href: 'mailto:skywalkerch@foxmail.com',
-                target: '_blank',
+                target: '_self',
               }
 
             ]
@@ -207,11 +207,11 @@ const config = {
               {
                 label: '✒️随笔',
                 to: '/blog',
-                target: '_blank'
+                target: '_self'
               }, {
                 to :'docs/independent/about',
                 label: '🗺️关于',
-                target: '_blank'
+                target: '_self'
               }
             ]
           }
