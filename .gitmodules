@@ -1,0 +1,3 @@
+[submodule "static/storage/drawio"]
+	path = static/storage/drawio
+	url = git@github.com:skywalkerch/draw.io.git
