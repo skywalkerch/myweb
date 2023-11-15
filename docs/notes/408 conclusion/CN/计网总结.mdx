@@ -106,3 +106,49 @@ POP3
 
 > hotmail Gmail这种电子邮件的特点是 用户通过用户浏览器来和邮件服务器进行发送接收，这个过程使用HTTP协议，仅当不同邮件服务器之间传送邮件时才使用SMTP协议
 
+
+![](https://skywalkerch-1303839378.cos.ap-nanjing.myqcloud.com/202311152318048.png)
+```mermaid
+sequenceDiagram
+Note over 主机H1: 需要查询域名的IP，因此需要DNS服务器的MAC
+rect rgb(0,253,126)
+主机H1->>DNS服务器: 1.1、查询DNS服务器MAC
+Note over 主机H1: 交换机记录端口4以及主机H1对应MAC
+DNS服务器->>主机H1: 1.2、发送DNS服务器的MAC
+Note over DNS服务器: 交换机记录端口1以及DNS服务器对应MAC
+end
+
+rect rgb(173,216,230	)
+主机H1->>DNS服务器: 1.3 向DNS服务器查询域名IP
+Note over 主机H1: 交换机此时有转发表，故该帧不广播
+DNS服务器->>主机H1: 1.4 像主机H1发送域名的IP信息
+end
+Note over 主机H1: 主机H1得到IP后，发现IP不在本局域网内
+Note over 主机H1: 需要将访问帧发给默认网关，那么主机H1需要得到路由器的MAC 
+
+rect rgb(102,205,170	)
+Note over 主机H1: 2.1 主机H1拿着默认网关的IP发送ARP查询帧 目的MAC为ff-ff-ff-ff-ff-ff
+路由器->>主机H1: 2.2 像主机H1发送路由器的MAC地址
+Note over 路由器: 交换机记录路由器的mac以及对应的端口2
+end
+
+rect rgb(30,144,255	)
+Note over 主机H1: TCP握手阶段
+主机H1->>路由器: 3.1 向路由器发送目的IP为域名对应IP的TCP建立请求帧
+路由器->>web服务器: （TCP握手一）路由器将源IP地址进行NAT转换，并把请求帧发给web服务器
+web服务器->>路由器: （TCP握手二）web服务器同意建立请求
+路由器->>主机H1: 
+主机H1->>路由器: （TCP握手三）主机H1发送http请求html文件
+路由器->>web服务器: 
+Note over 主机H1: TCP连接建立完成
+web服务器->>路由器: 发送html文件
+路由器->>主机H1: 
+
+end
+```
+
+**上图有三点需要注意**（2021年真题错误点）
+
+- 1.1 主机H1第一个帧是查询DNS服务器的MAC，这个时候交换机转发表为空，因此该帧会被交换机广播，H2也会收到该帧。
+- 1.3 主机H1向DNS服务器查询域名IP，这个时候交换机转发表有DNS服务器的MAC，因此该帧不会被交换机广播。
+- 2.1 主机H1是查询路由器的MAC，这个时候交换机转发表没有路由器MAC对应的端口，因此该帧会被交换机广播，H2也会收到该帧。。
